@@ -1,0 +1,27 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title OpenStreetMap/JavaScript
+    link(rel="stylesheet", href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css", integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ==", crossorigin="")
+    link(rel="stylesheet", href="./index.css")
+  body 
+
+    h1 Où est ta salle de 
+      strong fitness
+    
+    .container 
+      .list
+        each val, index in [{dataLat: '43.604067', dataLng: '3.881461', dataPrice: '75'}, {dataLat: '43.605473', dataLng: '3.885865', dataPrice: '19'}, {dataLat: '43.604895', dataLng: '3.89982', dataPrice: '15'}, {dataLat: '43.60895', dataLng: '3.886023', dataPrice: '36'}, {dataLat: '43.605154', dataLng: '3.90194', dataPrice: '79'}, {dataLat: '43.608096', dataLng: '3.899512', dataPrice: '31'}, {dataLat: '43.604319', dataLng: '3.890834', dataPrice: '15'}, {dataLat: '43.601043', dataLng: '3.901047', dataPrice: '54'}, {dataLat: '43.60573', dataLng: '3.893535', dataPrice: '72'}, {dataLat: '43.610376', dataLng: '3.898592', dataPrice: '77'}, {dataLat: '43.601027', dataLng: '3.879493', dataPrice: '68'}, {dataLat: '43.603587', dataLng: '3.884874', dataPrice: '17'}, {dataLat: '43.601009', dataLng: '3.889528', dataPrice: '98'}, {dataLat: '43.602389', dataLng: '3.90077', dataPrice: '18'}, {dataLat: '43.606712', dataLng: '3.880275', dataPrice: '22'}, {dataLat: '43.605687', dataLng: '3.882674', dataPrice: '84'}, {dataLat: '43.601066', dataLng: '3.886624', dataPrice: '36'}, {dataLat: '43.608961', dataLng: '3.889871', dataPrice: '67'}]
+          .item.js-marker(data-lat=val.dataLat, data-lng=val.dataLng, data-price=val.dataPrice)
+            img(src="https://via.placeholder.com/400x260", alt="")
+            h4="Price : "+val.dataPrice
+            p Lorem ipsum dolor sit amet.
+      
+      .map#map 
+        p azerty
+        
+    script(src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js", integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ==", crossorigin="") 
+    script(src="./index.js") 

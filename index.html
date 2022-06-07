@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenStreetMap/JavaScript</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css" integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ==" crossorigin="">
+    <link rel="stylesheet" href="./index.css">
+  </head>
+  <body> 
+    <h1>Où est ta salle de <strong>fitness</strong></h1>
+    <div class="container"> 
+      <div class="list">
+        <div class="item js-marker" data-lat="43.604067" data-lng="3.881461" data-price="75"><img src="https://via.placeholder.com/400x260" alt="">
+          <h4>Price : 75</h4>
+          <p>Lorem ipsum dolor sit amet.</p>
+        </div>
+        <div class="item js-marker" data-lat="43.605473" data-lng="3.885865" data-price="19"><img src="https://via.placeholder.com/400x260" alt="">
+          <h4>Price : 19</h4>
+          <p>Lorem ipsum dolor sit amet.</p>
+        </div>
+        <div class="item js-marker" data-lat="43.604895" data-lng="3.89982" data-price="15"><img src="https://via.placeholder.com/400x260" alt="">
+          <h4>Price : 15</h4>
+          <p>Lorem ipsum dolor sit amet.</p>
+        </div>
+        <div class="item js-marker" data-lat="43.60895" data-lng="3.886023" data-price="36"><img src="https://via.placeholder.com/400x260" alt="">
+          <h4>Price : 36</h4>
+          <p>Lorem ipsum dolor sit amet.</p>
+        </div>
+        <div class="item js-marker" data-lat="43.605154" data-lng="3.90194" data-price="79"><img src="https://via.placeholder.com/400x260" alt="">
+          <h4>Price : 79</h4>
+          <p>Lorem ipsum dolor sit amet.</p>
+        </div>
+        <div class="item js-marker" data-lat="43.608096" data-lng="3.899512" data-price="31"><img src="https://via.placeholder.com/400x260" alt="">
+          <h4>Price : 31</h4>
+          <p>Lorem ipsum dolor sit amet.</p>
+        </div>
+        <div class="item js-marker" data-lat="43.604319" data-lng="3.890834" data-price="15"><img src="https://via.placeholder.com/400x260" alt="">
+          <h4>Price : 15</h4>
+          <p>Lorem ipsum dolor sit amet.</p>
+        </div>
+        <div class="item js-marker" data-lat="43.601043" data-lng="3.901047" data-price="54"><img src="https://via.placeholder.com/400x260" alt="">
+          <h4>Price : 54</h4>
+          <p>Lorem ipsum dolor sit amet.</p>
+        </div>
+        <div class="item js-marker" data-lat="43.60573" data-lng="3.893535" data-price="72"><img src="https://via.placeholder.com/400x260" alt="">
+          <h4>Price : 72</h4>
+          <p>Lorem ipsum dolor sit amet.</p>
+        </div>
+        <div class="item js-marker" data-lat="43.610376" data-lng="3.898592" data-price="77"><img src="https://via.placeholder.com/400x260" alt="">
+          <h4>Price : 77</h4>
+          <p>Lorem ipsum dolor sit amet.</p>
+        </div>
+        <div class="item js-marker" data-lat="43.601027" data-lng="3.879493" data-price="68"><img src="https://via.placeholder.com/400x260" alt="">
+          <h4>Price : 68</h4>
+          <p>Lorem ipsum dolor sit amet.</p>
+        </div>
+        <div class="item js-marker" data-lat="43.603587" data-lng="3.884874" data-price="17"><img src="https://via.placeholder.com/400x260" alt="">
+          <h4>Price : 17</h4>
+          <p>Lorem ipsum dolor sit amet.</p>
+        </div>
+        <div class="item js-marker" data-lat="43.601009" data-lng="3.889528" data-price="98"><img src="https://via.placeholder.com/400x260" alt="">
+          <h4>Price : 98</h4>
+          <p>Lorem ipsum dolor sit amet.</p>
+        </div>
+        <div class="item js-marker" data-lat="43.602389" data-lng="3.90077" data-price="18"><img src="https://via.placeholder.com/400x260" alt="">
+          <h4>Price : 18</h4>
+          <p>Lorem ipsum dolor sit amet.</p>
+        </div>
+        <div class="item js-marker" data-lat="43.606712" data-lng="3.880275" data-price="22"><img src="https://via.placeholder.com/400x260" alt="">
+          <h4>Price : 22</h4>
+          <p>Lorem ipsum dolor sit amet.</p>
+        </div>
+        <div class="item js-marker" data-lat="43.605687" data-lng="3.882674" data-price="84"><img src="https://via.placeholder.com/400x260" alt="">
+          <h4>Price : 84</h4>
+          <p>Lorem ipsum dolor sit amet.</p>
+        </div>
+        <div class="item js-marker" data-lat="43.601066" data-lng="3.886624" data-price="36"><img src="https://via.placeholder.com/400x260" alt="">
+          <h4>Price : 36</h4>
+          <p>Lorem ipsum dolor sit amet.</p>
+        </div>
+        <div class="item js-marker" data-lat="43.608961" data-lng="3.889871" data-price="67"><img src="https://via.placeholder.com/400x260" alt="">
+          <h4>Price : 67</h4>
+          <p>Lorem ipsum dolor sit amet.</p>
+        </div>
+      </div>
+      <div class="map" id="map"> 
+        <p>azerty</p>
+      </div>
+    </div>
+    <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js" integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ==" crossorigin=""> </script>
+    <script src="./index.js"> </script>
+  </body>
+</html>
