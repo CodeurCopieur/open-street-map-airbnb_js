@@ -20,8 +20,10 @@ html(lang="en")
             h4="Price : "+val.dataPrice
             p Lorem ipsum dolor sit amet.
       
-      .map#map 
-        p azerty
-        
-    script(src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js", integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ==", crossorigin="") 
-    script(src="./index.js") 
+      .map#map
+
+    
+    //- script(src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js", integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ==", crossorigin="") 
+    //- script(type="text/javascript", src="https://stamen-maps.a.ssl.fastly.net/js/tile.stamen.js?v1.3.0")
+    script(type="text/javascript", src="./vendor.js") 
+    script(type="text/javascript", src="./index.js") 
