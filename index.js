@@ -61,11 +61,15 @@ const initMap = async function() {
     Array.from(document.querySelectorAll('.js-marker')).forEach( item => {
         let marker = map.addMaker( item.dataset.lat, item.dataset.lng, item.dataset.price + ' €')
         item.addEventListener('mouseover', function () {
-
-            hoverMaker != null ? hoverMaker.unsetActive() : null;
-
+            hoverMaker !== null ? hoverMaker.unsetActive() : null;
             marker.setActive()
             hoverMaker = marker
+        })
+
+        item.addEventListener('mouseleave', function () {
+            if(hoverMaker !== null){
+                hoverMaker.unsetActive()
+            }
         })
     })
     // centré automatiquement
