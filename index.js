@@ -9,12 +9,16 @@ class LeafletMap {
 
     async load(elt) {
         return new Promise((resolve,reject) => {
-            $script('https://unpkg.com/leaflet@1.8.0/dist/leaflet.js', () => {
-                this.map = L.map(elt)
-                L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
-                    maxZoom: 18,
-                    attribution: '© OpenStreetMap'
-                }).addTo(this.map);
+            $script(['https://unpkg.com/leaflet@1.8.0/dist/leaflet.js', 'https://stamen-maps.a.ssl.fastly.net/js/tile.stamen.js?v1.3.0'], () => {
+                this.map = L.map(elt, {scrollWheelZoom: false})
+                // L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
+                //     maxZoom: 18,
+                //     attribution: '© OpenStreetMap'
+                // }).addTo(this.map);
+
+                this.map.addLayer(new L.StamenTileLayer("toner", {
+                    detectRetina: true
+                }))
                 resolve()
             })
         })
@@ -33,6 +37,7 @@ class LeafletMap {
 
 class LeafletMarker {
     constructor(point, text, map) {
+        this.text = text
         this.popup = L.popup({
             autoClose: false,
             closeOnEscapeKey: false,
@@ -52,12 +57,31 @@ class LeafletMarker {
     unsetActive() {
         this.popup.getElement().classList.remove('is-active')
     }
+
+    addEventListener(event, cb){
+        this.popup.addEventListener('add', ()=> {
+            this.popup.getElement().addEventListener(event, cb)
+        })
+    }
+
+    setContent(text) {
+        this.popup.setContent(text)
+        this.popup.getElement().classList.add('is-expanded')
+        this.popup.update()
+    }
+
+    resetContent(){
+        this.popup.setContent(this.text)
+        this.popup.getElement().classList.remove('is-expanded')
+        this.popup.update()
+    }
 }
 
 const initMap = async function() {
     let map = new LeafletMap()
     await map.load($map)
     let hoverMaker = null
+    let activeMaker = null
     Array.from(document.querySelectorAll('.js-marker')).forEach( item => {
         let marker = map.addMaker( item.dataset.lat, item.dataset.lng, item.dataset.price + ' €')
         item.addEventListener('mouseover', function () {
@@ -70,6 +94,14 @@ const initMap = async function() {
             if(hoverMaker !== null){
                 hoverMaker.unsetActive()
             }
+        })
+
+        marker.addEventListener('click', function() {
+            if(activeMaker !== null){
+                activeMaker.resetContent()
+            }
+            marker.setContent(item.innerHTML)
+            activeMaker = marker
         })
     })
     // centré automatiquement
