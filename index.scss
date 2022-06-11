@@ -67,5 +67,56 @@ h1 {
 }
 
 .marker.is-active .leaflet-popup-content-wrapper {
-  background-color: red;
+  background-color: #5069ff;
+}
+
+.marker.leaflet-popup {
+  margin-bottom: 16px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 5px 10px;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .3);
+  background-color: #fff;
+}
+
+.marker.leaflet-popup::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  margin-left: -8px;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 8px solid #fff;
+}
+
+.marker .leaflet-popup-content-wrapper{
+  background: transparent;
+  color: inherit;
+  box-shadow: none;
+  text-align: inherit;
+}
+
+.marker.is-active {
+  z-index: 300;
+  background-color: #5069ff;
+  color: #fff;
+}
+
+.marker.is-active.leaflet-popup::after {
+  border-top-color: #5069ff;
+}
+
+.marker .leaflet-popup-content  {
+  text-align: inherit;
+  color: inherit;
+  margin: 0;
+}
+
+.marker .leaflet-popup-tip-container{
+  display: none;
 }
