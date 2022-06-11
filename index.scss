@@ -70,6 +70,11 @@ h1 {
   background-color: #5069ff;
 }
 
+
+.marker.is-active.is-expanded .leaflet-popup-content-wrapper {
+  background-color: #fff;
+}
+
 .marker.leaflet-popup {
   margin-bottom: 16px;
   cursor: pointer;
@@ -101,13 +106,13 @@ h1 {
   text-align: inherit;
 }
 
-.marker.is-active {
+.marker.is-active, .marker:hover{
   z-index: 300;
   background-color: #5069ff;
   color: #fff;
 }
 
-.marker.is-active.leaflet-popup::after {
+.marker.is-active.leaflet-popup::after, .marker:hover::after {
   border-top-color: #5069ff;
 }
 
@@ -119,4 +124,16 @@ h1 {
 
 .marker .leaflet-popup-tip-container{
   display: none;
+}
+
+.marker.is-expanded {
+  z-index: 301;
+  background-color: #fff!important;
+  color: inherit!important;
+  text-align: left;
+}
+
+
+.marker.is-expanded::after {
+  border-top-color: #fff;
 }
