@@ -23,7 +23,17 @@ class LeafletMap {
     addMaker(lat, lng, text) {
         let point = [lat, lng]
         this.bounds.push(point)
-        L.popup({
+        return new LeafletMarker(point, text, this.map)
+    }   
+    center () {
+        // creer une zone par rapportau différents points
+        this.map.fitBounds(this.bounds)
+    }
+}
+
+class LeafletMarker {
+    constructor(point, text, map) {
+        this.popup = L.popup({
             autoClose: false,
             closeOnEscapeKey: false,
             closeOnClick: false,
@@ -33,20 +43,30 @@ class LeafletMap {
         })
             .setLatLng(point)
             .setContent(text)
-            .openOn(this.map)
+            .openOn(map)
     }
-    center () {
-        // creer une zone par rapportau différents points
-        this.map.fitBounds(this.bounds)
+
+    setActive() {
+        this.popup.getElement().classList.add('is-active')
+    }
+    unsetActive() {
+        this.popup.getElement().classList.remove('is-active')
     }
 }
 
 const initMap = async function() {
     let map = new LeafletMap()
     await map.load($map)
-
+    let hoverMaker = null
     Array.from(document.querySelectorAll('.js-marker')).forEach( item => {
-        map.addMaker( item.dataset.lat, item.dataset.lng, item.dataset.price + ' €')
+        let marker = map.addMaker( item.dataset.lat, item.dataset.lng, item.dataset.price + ' €')
+        item.addEventListener('mouseover', function () {
+
+            hoverMaker != null ? hoverMaker.unsetActive() : null;
+
+            marker.setActive()
+            hoverMaker = marker
+        })
     })
     // centré automatiquement
     map.center()
